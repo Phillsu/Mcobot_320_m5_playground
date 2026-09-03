@@ -1,0 +1,36 @@
+# ============ Python ============
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ============ uv / 虛擬環境 ============
+# 本專案用 uv 管理 (.venv)；pyproject.toml 與 uv.lock 要提交，不要忽略
+.venv/
+venv/
+env/
+.uv/
+
+# ============ IDE / 編輯器 ============
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ============ 模型檔 ============
+# hand_landmarker.task (~7.8MB) 執行時缺檔會自動下載，故不進版控；
+# 若想固定某版模型，改為追蹤 models/ 即可
+models/
+
+# ============ 日誌 ============
+*.log
+
+# ============ 作業系統雜項 ============
+.DS_Store
+Thumbs.db
+Desktop.ini
