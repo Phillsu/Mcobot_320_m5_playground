@@ -48,7 +48,7 @@ uv pip install --python .venv/Scripts/python.exe mediapipe opencv-python
 執行腳本統一用：
 
 ```bash
-C:/Users/tangw/.local/bin/uv.exe run D:/RBT/4test/.venv/Scripts/python.exe <script.py>
+python <script.py>
 ```
 
 ---
@@ -71,7 +71,7 @@ C:/Users/tangw/.local/bin/uv.exe run D:/RBT/4test/.venv/Scripts/python.exe <scri
 自動偵測串口 → 讀取 6 軸角度（含重試）→ 舵機未上電自動 `power_on()` → 記錄起始姿態 → **J1 轉到 40°** → 測試完成**自動回到起始姿態**並回讀驗證（誤差 < 2°）。
 
 ```bash
-C:/Users/tangw/.local/bin/uv.exe run D:/RBT/4test/.venv/Scripts/python.exe demo_robust.py
+python demo_robust.py
 ```
 
 正常輸出結尾：
@@ -86,7 +86,7 @@ C:/Users/tangw/.local/bin/uv.exe run D:/RBT/4test/.venv/Scripts/python.exe demo_
 初始化機械臂後，讓 Atom RGB 燈**藍 → 紅 → 綠**循環 7 次（每色 2 秒）。適合剛打通通訊時確認連線。
 
 ```bash
-C:/Users/tangw/.local/bin/uv.exe run D:/RBT/4test/.venv/Scripts/python.exe demo.py
+python demo.py
 ```
 
 ### 4.3 `mc_diag.py` — 分層體檢（出問題先跑這個）
@@ -101,7 +101,7 @@ is_power_on            → 舵機供電（1=開 0=關 -1=錯誤）
 ```
 
 ```bash
-C:/Users/tangw/.local/bin/uv.exe run D:/RBT/4test/.venv/Scripts/python.exe mc_diag.py
+python mc_diag.py
 ```
 
 全部通過會印 `✔ 一切正常，可執行運動指令`；任一層異常會直接告訴你該查什麼。
@@ -111,7 +111,7 @@ C:/Users/tangw/.local/bin/uv.exe run D:/RBT/4test/.venv/Scripts/python.exe mc_di
 掃描 XInput UserIndex 0~3，列出已連接的手把，接著即時顯示 6 秒按鍵 / 搖桿 / 扳機數值。
 
 ```bash
-C:/Users/tangw/.local/bin/uv.exe run D:/RBT/4test/.venv/Scripts/python.exe detect_gamepad.py
+python detect_gamepad.py
 ```
 
 看到 `UserIndex x: >>> 已連接 <<<` 即代表手把可用。
@@ -121,7 +121,7 @@ C:/Users/tangw/.local/bin/uv.exe run D:/RBT/4test/.venv/Scripts/python.exe detec
 Windows XInput + pymycobot，**零第三方依賴**（手把資料直接走系統 DLL）。控制週期 10Hz，含死區、軟限位、斷線保護、防漂移校正。
 
 ```bash
-C:/Users/tangw/.local/bin/uv.exe run D:/RBT/4test/.venv/Scripts/python.exe xbox_teleop.py
+python xbox_teleop.py
 ```
 
 | 手把 | 動作 |
@@ -153,13 +153,13 @@ MediaPipe 手掌偵測，**絕對游標式**控制末端（TCP）座標：畫面
 
 ```bash
 # 先跑預覽模式（不連機械臂），確認鏡頭與手勢偵測正常
-C:/Users/tangw/.local/bin/uv.exe run D:/RBT/4test/.venv/Scripts/python.exe hand_teleop.py --preview
+hand_teleop.py --preview
 
 # 正式搖操
-C:/Users/tangw/.local/bin/uv.exe run D:/RBT/4test/.venv/Scripts/python.exe hand_teleop.py --cam 0
+hand_teleop.py --cam 0
 
 # 只測攝影機能不能開（無視窗）
-C:/Users/tangw/.local/bin/uv.exe run D:/RBT/4test/.venv/Scripts/python.exe hand_teleop.py --selftest
+hand_teleop.py --selftest
 ```
 
 **啟動流程（不用按任何鍵）**：
